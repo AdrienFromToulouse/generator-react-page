@@ -41,13 +41,13 @@ ReactPageGenerator.prototype.app = function app() {
   this.mkdir('app/src');
   this.mkdir('app/src/pages');
 
-  this.copy('../../templates/common/index.html', 'app/src/index.html');
+  this.copy('../../templates/common/index.html', 'app/index.html');
   this.copy('../../templates/common/welcome.js', 'app/src/pages/welcome.js');
 
   this.copy('_package.json', 'package.json');
   this.copy('_bower.json', 'bower.json');
 
-  // this.template('Gruntfile.js', 'Gruntfile.js');
+  this.copy('Gruntfile.js', 'Gruntfile.js');
 };
 
 ReactPageGenerator.prototype.runtime = function runtime() {

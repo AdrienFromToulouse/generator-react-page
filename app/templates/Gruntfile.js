@@ -29,6 +29,10 @@ module.exports = function (grunt) {
   grunt.initConfig({
     yeoman: yeomanConfig,
     watch: {
+      react: {
+        files: ['<%= yeoman.app %>/src/pages/{,*/}*.js'],
+        tasks: ['react:app']
+      },
       livereload: {
         options: {
           livereload: LIVERELOAD_PORT
@@ -36,7 +40,7 @@ module.exports = function (grunt) {
         files: [
           '{.tmp,<%= yeoman.app %>}/{,*/}*.html',
           '{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
-          '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
+          '{.tmp,<%= yeoman.app %>}/src/pages/{,*/}*.js',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }
@@ -95,6 +99,17 @@ module.exports = function (grunt) {
         }]
       },
       server: '.tmp'
+    },
+    react: {
+      app: {
+        options: {
+          extension:    'js',
+          ignoreMTime:  false
+        },
+        files: {
+          '.tmp/src/pages': '<%= yeoman.app %>/src/pages/'
+        }
+      },
     },
     jshint: {
       options: {
@@ -206,14 +221,11 @@ module.exports = function (grunt) {
     },
     concurrent: {
       server: [
-        'coffee:dist',
-        'jade:dist'
+        'react'
       ],
       test: [
-        'coffee'
       ],
       dist: [
-        'coffee',
         'imagemin',
         'htmlmin'
       ]
@@ -259,7 +271,6 @@ module.exports = function (grunt) {
       'clean:server',
       'concurrent:server',
       'connect:livereload',
-      // 'jade',
       'open',
       'watch'
     ]);
