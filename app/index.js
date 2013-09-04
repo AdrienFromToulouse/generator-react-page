@@ -11,51 +11,74 @@ var ReactPageGenerator = module.exports = function ReactPageGenerator(args, opti
     this.installDependencies({ skipInstall: options['skip-install'] });
   });
 
+  this.argument('appname', { type: String, required: false });
+  this.appname = this.appname || path.basename(process.cwd());
+
   this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
 };
 
 util.inherits(ReactPageGenerator, yeoman.generators.Base);
 
+
 ReactPageGenerator.prototype.askFor = function askFor() {
   var cb = this.async();
 
-  // have Yeoman greet the user.
-  console.log(this.yeoman);
-
-  var prompts = [{
+  this.prompt([{
     type: 'confirm',
-    name: 'someOption',
-    message: 'Would you like to enable this option?',
-    default: true
-  }];
-
-  this.prompt(prompts, function (props) {
-    this.someOption = props.someOption;
+    name: 'bootstrap',
+    message: 'Would you like to include Twitter Bootstrap?',
+  default: true
+  }], function (props) {
+    this.bootstrap = props.bootstrap;
 
     cb();
   }.bind(this));
 };
 
+
 ReactPageGenerator.prototype.app = function app() {
   this.mkdir('app');
-  this.mkdir('app/src');
-  this.mkdir('app/src/pages');
+  this.mkdir('app/core');
+  this.mkdir('app/elements');
+  this.mkdir('app/elements/Banner');
+  this.mkdir('app/elements/VectorWidget');
+  this.mkdir('app/pages');
 
-  this.copy('../../templates/common/index.html', 'app/index.html');
-  this.copy('../../templates/common/welcome.js', 'app/src/pages/welcome.js');
+  this.copy('../../templates/src/index.js', 'app/index.js');
 
-  this.copy('_package.json', 'package.json');
-  this.copy('_bower.json', 'bower.json');
+  this.copy('../../templates/src/elements/Banner/Banner.js', 'app/elements/Banner/Banner.js');
+  this.copy('../../templates/src/elements/Banner/Banner.css', 'app/elements/Banner/Banner.css');
+  this.copy('../../templates/src/elements/Banner/ReactPageLogo.png', 'app/elements/Banner/ReactPageLogo.png');
+  this.copy('../../templates/src/elements/Banner/ReactPageLogo@2x.png', 'app/elements/Banner/ReactPageLogo@2x.png');
 
-  this.copy('Gruntfile.js', 'Gruntfile.js');
+  this.copy('../../templates/src/elements/VectorWidget/VectorWidget.js', 'app/elements/VectorWidget/VectorWidget.js');
+
+  this.copy('../../templates/src/pages/about.js', 'app/pages/about.js');
+
+  this.copy('../../templates/src/core/SiteBoilerPlate.js', 'app/core/SiteBoilerPlate.js');
+  this.copy('../../templates/src/core/SiteBoilerPlate.css', 'app/core/SiteBoilerPlate.css');
+
+  this.template('../../templates/common/settings.json', 'settings.json');
+  this.template('../../templates/common/_bower.json', 'bower.json');
+  this.template('../../templates/common/_package.json', 'package.json');
+
+  this.copy('../../templates/common/Gruntfile.js', 'Gruntfile.js');
 };
 
+ReactPageGenerator.prototype.packageFiles = function () {
+  this.template('../../templates/common/settings.json', 'settings.json');
+  this.template('../../templates/common/_bower.json', 'bower.json');
+  this.template('../../templates/common/_package.json', 'package.json');
+  // this.template('../../templates/common/Gruntfile.js', 'Gruntfile.js');
+};
+
+
 ReactPageGenerator.prototype.runtime = function runtime() {
-  this.copy('bowerrc', '.bowerrc');
-  this.copy('gitignore', '.gitignore');
+  this.template('../../templates/common/root/bowerrc', '.bowerrc');
+  this.template('../../templates/common/gitignore', '.gitignore');
 };
 
 ReactPageGenerator.prototype.projectfiles = function projectfiles() {
-  this.copy('editorconfig', '.editorconfig');
-  this.copy('jshintrc', '.jshintrc');
+  this.template('../../templates/common/root/editorconfig', '.editorconfig');
+  this.template('../../templates/common/root/jshintrc', '.jshintrc');
 };

@@ -1,0 +1,8 @@
+Description:
+    Creates a new React page
+
+Example:
+    yo react-page:page Think
+
+    This will create:
+        app/src/pages/thing.js

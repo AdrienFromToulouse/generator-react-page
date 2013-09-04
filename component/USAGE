@@ -1,0 +1,8 @@
+Description:
+    Creates a new React component
+
+Example:
+    yo react-page:component Think
+
+    This will create:
+        app/src/components/thing.js

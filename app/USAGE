@@ -1,0 +1,15 @@
+Description:
+    Creates a default React-page app
+
+Example:
+    yo react-page
+
+    This will create:
+        Gruntfile.js
+        bower.json
+
+        app/index.js
+        app/components/Banner/somefiles
+        app/components/VectorWidget/somefiles
+        app/pages/about.js
+        app/core/somefiles

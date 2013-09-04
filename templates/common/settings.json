@@ -1,0 +1,8 @@
+{
+ "webserver": {
+   "port": "3505"
+ },
+ "liveReload": {
+   "port" : 35728
+ }
+}
