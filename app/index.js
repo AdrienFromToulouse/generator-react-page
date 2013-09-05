@@ -39,19 +39,19 @@ ReactPageGenerator.prototype.askFor = function askFor() {
 ReactPageGenerator.prototype.app = function app() {
   this.mkdir('app');
   this.mkdir('app/core');
-  this.mkdir('app/elements');
-  this.mkdir('app/elements/Banner');
-  this.mkdir('app/elements/VectorWidget');
+  this.mkdir('app/components');
+  this.mkdir('app/components/Banner');
+  this.mkdir('app/components/VectorWidget');
   this.mkdir('app/pages');
 
   this.copy('../../templates/src/index.js', 'app/index.js');
 
-  this.copy('../../templates/src/elements/Banner/Banner.js', 'app/elements/Banner/Banner.js');
-  this.copy('../../templates/src/elements/Banner/Banner.css', 'app/elements/Banner/Banner.css');
-  this.copy('../../templates/src/elements/Banner/ReactPageLogo.png', 'app/elements/Banner/ReactPageLogo.png');
-  this.copy('../../templates/src/elements/Banner/ReactPageLogo@2x.png', 'app/elements/Banner/ReactPageLogo@2x.png');
+  this.copy('../../templates/src/components/Banner/Banner.js', 'app/components/Banner/Banner.js');
+  this.copy('../../templates/src/components/Banner/Banner.css', 'app/components/Banner/Banner.css');
+  this.copy('../../templates/src/components/Banner/ReactPageLogo.png', 'app/components/Banner/ReactPageLogo.png');
+  this.copy('../../templates/src/components/Banner/ReactPageLogo@2x.png', 'app/components/Banner/ReactPageLogo@2x.png');
 
-  this.copy('../../templates/src/elements/VectorWidget/VectorWidget.js', 'app/elements/VectorWidget/VectorWidget.js');
+  this.copy('../../templates/src/components/VectorWidget/VectorWidget.js', 'app/components/VectorWidget/VectorWidget.js');
 
   this.copy('../../templates/src/pages/about.js', 'app/pages/about.js');
 

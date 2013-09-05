@@ -15,6 +15,7 @@
  *
  * @jsx React.DOM
  */
+"use strict";
 
 var React = require('React');
 
@@ -26,7 +27,7 @@ var React = require('React');
  * installed to.
  *
  *    // Depends on css from my project - relative paths automatically resolved.
- *    require('./SiteBoilerPlate.css');
+ *    require('./Banner.css');
  *
  *    // Depends on css from dependency 'bootstrap' in package.json
  *    require('bootstrap/Text-Input.css');
@@ -39,45 +40,24 @@ var React = require('React');
  */
 
 /**
- * Component for performing some redundant site wrapping. Customize to your
- * liking, or create a new, similar module. `react-page` automatically ensures
- * that all fo the JavaScript used to generate the page, will be bundled and
- * sent into the response so that all the event handlers will work.
- *
- * Usage:
- *
- * var React = require('React');
- * var SiteBoilerPlate = require('./components/SiteBoilerPlate.jsx');
- * var MyPage = React.createClass({
- *   render: function() {
- *     return (
- *       <SiteBoilerPlate>
- *          <div>Hello This Is My App!</div>
- *       </SiteBoilerPlate>
- *     );
- *   }
- * });
+ * Look at Banner, Michael!
  */
-
-var SiteBoilerPlate = React.createClass({
+var Banner = React.createClass({
+  getInitialState: function() {
+    return {initialized: false};
+  },
+  componentDidMount: function() {
+    this.setState({initialized: true});
+  },
   render: function() {
+    var classes =
+      'banner ' + (this.state.initialized ? 'fadeIn' : '');
     return (
-      <html>
-        <head>
-          <title>React Page | Client-Server JavaScript Rendering</title>
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, user-scalable=no"
-          />
-          <link rel="stylesheet" href="/core/SiteBoilerPlate.css" />
-          <link rel="stylesheet" href="/components/Banner/Banner.css" />
-        </head>
-        <body>
-          {this.props.children}
-        </body>
-      </html>
+      <h1 class={classes}>
+        {this.props.bannerMessage}
+      </h1>
     );
   }
 });
 
-module.exports = SiteBoilerPlate;
+module.exports = Banner;

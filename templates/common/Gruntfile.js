@@ -13,13 +13,12 @@ var mountFolder = function (connect, dir) {
 
 var reactMiddleware = require('react-page-middleware');
 var PROJECT_ROOT = __dirname;
-var FILE_SERVE_ROOT = path.join(PROJECT_ROOT, '.tmp');
+var FILE_SERVE_ROOT = path.join(PROJECT_ROOT, '/app');
 
 var reactOptions = {
   projectRoot: PROJECT_ROOT,
   pageRouteRoot: FILE_SERVE_ROOT
 };
-
 
 module.exports = function (grunt) {
   // load all grunt tasks
@@ -37,10 +36,6 @@ module.exports = function (grunt) {
   grunt.initConfig({
     yeoman: yeomanConfig,
     watch: {
-      react: {
-        files: ['<%= yeoman.app %>/**/{,*/}*.js'],
-        tasks: ['react:app']
-      },
       livereload: {
         options: {
           livereload: LIVERELOAD_PORT
@@ -97,17 +92,17 @@ module.exports = function (grunt) {
       },
       server: '.tmp'
     },
-    react: {
-      app: {
-        options: {
-          extension:    'js',
-          ignoreMTime:  false
-        },
-        files: {
-          '.tmp/': '<%= yeoman.app %>/'
-        }
-      },
-    },
+    // react: {
+    //   app: {
+    //     options: {
+    //       extension:    'js',
+    //       ignoreMTime:  false
+    //     },
+    //     files: {
+    //       '.tmp/': '<%= yeoman.app %>/'
+    //     }
+    //   },
+    // },
     jshint: {
       options: {
         jshintrc: '.jshintrc'
@@ -214,11 +209,18 @@ module.exports = function (grunt) {
             'generated/*'
           ]
         }]
+      },
+      totmp: {
+        files: [
+          {expand: true, src: ['app/**'], dest: '.tmp/'},
+        ]
+
       }
     },
     concurrent: {
       server: [
-        'react'
+        // 'react'
+        // 'copy:totmp'
       ],
       test: [
       ],

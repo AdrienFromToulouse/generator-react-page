@@ -12,24 +12,23 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * @jsx React.DOM
  */
 
+h1.banner {
+  opacity: 0;
+  font-family: "Helvetica";
+  color: #444;
+  font-weight: bold;
+  margin-top: 60px;
+  margin-bottom: 0px;
+  text-align: center;
+  -webkit-user-select: none;
+  font-size: 5vh; /* Chrome bug prevents resizing on window resize! */
+  width: 100%;    /* Putting width 100% causes repaint on resize */
+}
 
-var React = require('React');
-var SiteBoilerPlate = require('../core/SiteBoilerPlate.js');
-var Banner = require('../components/Banner/Banner.js');
+h1.banner.fadeIn {
+  opacity: 1;
+  transition: opacity 3s ease-in;
+}
 
-var index = React.createClass({
-
-  render: function() {
-    return (
-      <SiteBoilerPlate>
-        <Banner bannerMessage="About Us"/>
-      </SiteBoilerPlate>
-    );
-  }
-});
-
-module.exports = index;

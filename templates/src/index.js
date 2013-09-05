@@ -16,17 +16,17 @@
  * @jsx React.DOM
  */
 
-var Banner = require('./elements/Banner/Banner.js');
+var Banner = require('./components/Banner/Banner.js');
 var React = require('React');
 var SiteBoilerPlate = require('./core/SiteBoilerPlate.js');
-var VectorWidget = require('./elements/VectorWidget/VectorWidget.js');
+var VectorWidget = require('./components/VectorWidget/VectorWidget.js');
 
 var index = React.createClass({
   render: function() {
     return (
       <SiteBoilerPlate>
-        <Banner bannerMessage="Welcomeeeee to React"/>
-        // <VectorWidget />
+        <Banner bannerMessage="Welcome to React"/>
+        <VectorWidget />
       </SiteBoilerPlate>
     );
   }
