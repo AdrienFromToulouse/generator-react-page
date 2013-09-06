@@ -26,6 +26,18 @@ Finally, initiate the generator:
 $ yo react-page
 ```
 
+Create a component
+
+```
+$ yo react-page:component foo
+```
+
+Create a page
+
+```
+$ yo react-page:page foo
+```
+
 ## License
 
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
