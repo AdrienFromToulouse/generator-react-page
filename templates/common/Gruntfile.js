@@ -41,9 +41,8 @@ module.exports = function (grunt) {
           livereload: LIVERELOAD_PORT
         },
         files: [
-          '{.tmp,<%= yeoman.app %>}/{,*/}*.html',
-          '{.tmp,<%= yeoman.app %>}/src/pages/{,*/}*.js',
-          '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+          '{.tmp,<%= yeoman.app %>}/**/{,*/}*.js',
+          '{.tmp,<%= yeoman.app %>}/**/{,*/}*.css',
         ]
       }
     },
@@ -117,31 +116,6 @@ module.exports = function (grunt) {
     /*concat: {
       dist: {}
     },*/
-    rev: {
-      dist: {
-        files: {
-          src: [
-            '<%= yeoman.dist %>/scripts/{,*/}*.js',
-            '<%= yeoman.dist %>/styles/{,*/}*.css',
-            '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-            '<%= yeoman.dist %>/styles/fonts/*'
-          ]
-        }
-      }
-    },
-    useminPrepare: {
-      html: '.tmp/index.html',
-      options: {
-        dest: '<%= yeoman.dist %>'
-      }
-    },
-    usemin: {
-      html: ['<%= yeoman.dist %>/{,*/}*.html'],
-      css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
-      options: {
-        dirs: ['<%= yeoman.dist %>']
-      }
-    },
     imagemin: {
       dist: {
         files: [{
@@ -165,28 +139,6 @@ module.exports = function (grunt) {
       //   }
       // }
     },
-    htmlmin: {
-      dist: {
-        options: {
-          /*removeCommentsFromCDATA: true,
-          // https://github.com/yeoman/grunt-usemin/issues/44
-          //collapseWhitespace: true,
-          collapseBooleanAttributes: true,
-          removeAttributeQuotes: true,
-          removeRedundantAttributes: true,
-          useShortDoctype: true,
-          removeEmptyAttributes: true,
-          removeOptionalTags: true*/
-        },
-        files: [{
-          expand: true,
-          cwd: '.tmp',
-          src: ['*.html', 'views/*.html'],
-          dest: '<%= yeoman.dist %>'
-        }]
-      }
-    },
-    // Put files not handled in other tasks here
     copy: {
       dist: {
         files: [{
@@ -210,17 +162,10 @@ module.exports = function (grunt) {
           ]
         }]
       },
-      totmp: {
-        files: [
-          {expand: true, src: ['app/**'], dest: '.tmp/'},
-        ]
-
-      }
     },
     concurrent: {
       server: [
         // 'react'
-        // 'copy:totmp'
       ],
       test: [
       ],
@@ -234,25 +179,6 @@ module.exports = function (grunt) {
         html: ['<%= yeoman.dist %>/*.html']
       }
     },
-    ngmin: {
-      dist: {
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.dist %>/scripts',
-          src: '*.js',
-          dest: '<%= yeoman.dist %>/scripts'
-        }]
-      }
-    },
-    uglify: {
-      dist: {
-        files: {
-          '<%= yeoman.dist %>/scripts/scripts.js': [
-            '<%= yeoman.dist %>/scripts/scripts.js'
-          ]
-        }
-      }
-    }
   });
 
   grunt.registerTask('server', function (target) {
@@ -277,15 +203,11 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'useminPrepare',
     'concurrent:dist',
-    'concat',
     'copy',
     'cdnify',
     'ngmin',
     'cssmin',
-    'uglify',
-    'rev',
     'usemin'
   ]);
 
