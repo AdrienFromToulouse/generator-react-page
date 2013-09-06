@@ -21,7 +21,7 @@ var React = require('React');
 var SiteBoilerPlate = require('../core/SiteBoilerPlate.js');
 var Banner = require('../components/Banner/Banner.js');
 
-var index = React.createClass({
+var about = React.createClass({
 
   render: function() {
     return (
@@ -32,4 +32,4 @@ var index = React.createClass({
   }
 });
 
-module.exports = index;
+module.exports = about;

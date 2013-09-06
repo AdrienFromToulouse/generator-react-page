@@ -5,4 +5,4 @@ Example:
     yo react-page:component Think
 
     This will create:
-        app/src/components/thing.js
+        app/src/components/think/thing.js

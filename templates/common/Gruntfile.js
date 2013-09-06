@@ -171,7 +171,6 @@ module.exports = function (grunt) {
       ],
       dist: [
         'imagemin',
-        'htmlmin'
       ]
     },
     cdnify: {
@@ -206,7 +205,6 @@ module.exports = function (grunt) {
     'concurrent:dist',
     'copy',
     'cdnify',
-    'ngmin',
     'cssmin',
     'usemin'
   ]);

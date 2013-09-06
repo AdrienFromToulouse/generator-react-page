@@ -13,5 +13,8 @@ var PageGenerator = module.exports = function PageGenerator(args, options, confi
 util.inherits(PageGenerator, yeoman.generators.NamedBase);
 
 PageGenerator.prototype.files = function files() {
-  this.copy('somefile.js', 'app/src/pages/somefile.js');
+
+  var name = this.name + '.js';
+
+  this.template('../../templates/scaffold/page.js', 'app/pages/'+ name);
 };

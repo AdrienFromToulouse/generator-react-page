@@ -20,20 +20,20 @@ var ReactPageGenerator = module.exports = function ReactPageGenerator(args, opti
 util.inherits(ReactPageGenerator, yeoman.generators.Base);
 
 
-ReactPageGenerator.prototype.askFor = function askFor() {
-  var cb = this.async();
+// ReactPageGenerator.prototype.askFor = function askFor() {
+//   var cb = this.async();
 
-  this.prompt([{
-    type: 'confirm',
-    name: 'bootstrap',
-    message: 'Would you like to include Twitter Bootstrap?',
-  default: true
-  }], function (props) {
-    this.bootstrap = props.bootstrap;
+//   this.prompt([{
+//     // type: 'confirm',
+//     // name: 'bootstrap',
+//     // message: 'Would you like to include Twitter Bootstrap?',
+//   default: true
+//   }], function (props) {
+//     // this.bootstrap = props.bootstrap;
 
-    cb();
-  }.bind(this));
-};
+//     cb();
+//   }.bind(this));
+// };
 
 
 ReactPageGenerator.prototype.app = function app() {

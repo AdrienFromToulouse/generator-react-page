@@ -2,7 +2,7 @@ Description:
     Creates a default React-page app
 
 Example:
-    yo react-page
+    yo react-page toto
 
     This will create:
         Gruntfile.js

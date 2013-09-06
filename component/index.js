@@ -9,11 +9,16 @@ var ComponentGenerator = module.exports = function ComponentGenerator(args, opti
 
   console.log('You called the component subgenerator with the argument ' + this.name + '.');
 
-
 };
 
 util.inherits(ComponentGenerator, yeoman.generators.NamedBase);
 
 ComponentGenerator.prototype.files = function files() {
-  this.copy('component.js', 'this.name.js');
+
+  var dirname = this.name;
+  var name = this.name + '.js';
+
+  this.mkdir('app/components/'+dirname);
+ 
+  this.template('../../templates/scaffold/component.js', 'app/components/'+dirname+'/'+name);
 };
