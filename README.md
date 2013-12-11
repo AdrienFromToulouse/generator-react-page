@@ -43,3 +43,7 @@ $ yo react-page:page foo
 ## License
 
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/AdrienFromToulouse/generator-react-page/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
