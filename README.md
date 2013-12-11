@@ -1,3 +1,8 @@
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/AdrienFromToulouse/generator-react-page/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
+
+[![Build Status](https://travis-ci.org/AdrienFromToulouse/generator-react-page.png)](https://travis-ci.org/[YOUR_GITHUB_USERNAME]/[YOUR_PROJECT_NAME])
+
 # generator-react-page
 
 A generator for [Yeoman](http://yeoman.io).
