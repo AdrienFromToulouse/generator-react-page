@@ -1,3 +1,6 @@
+/**
+ * @jsx React.DOM
+ */
 "use strict";
 
 var React = require('React');
@@ -15,7 +18,7 @@ var <%= name %> = React.createClass({
   render: function() {
     var classes = '<%= name %>';
     return (
-      <h1 class={classes}>
+      <h1 className={classes}>
         Hello!
       </h1>
     );
